@@ -131,6 +131,9 @@ none /dev/shm tmpfs defaults 0 0
 none /run tmpfs defaults,mode=0755 0 0
 EOF
 
+# enable dhcp
+sed -i 's|USE_DHCP\[0\]=""|USE_DHCP\[0\]="yes"|' $rootfs/etc/rc.d/rc.inet1.conf
+
 # restart rc.inet1 to have routing for the loop device
 echo "/etc/rc.d/rc.inet1 restart" >> $rootfs/etc/rc.d/rc.local
 
