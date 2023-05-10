@@ -346,40 +346,14 @@ name=$3
 
 cat <<EOF >> $path/config
 
-# Adding a . for LXC 4.0.x
+# --dist slackware
+# Distribution configuration
+lxc.include = /usr/share/lxc/config/common.conf
+lxc.arch = linux64
+
+# Container specific configuration
 lxc.uts.name = $name
-
-# Adding .fstab for LXC 4.0.x
-lxc.mount.fstab = $rootfs/etc/fstab
-
-# Added .max and .path for LXC 4.0.x
-lxc.tty.max = 4
-lxc.pty.max = 1024
-lxc.rootfs.path = $rootfs
-
-lxc.cgroup.devices.deny = a
-# /dev/null and zero
-lxc.cgroup.devices.allow = c 1:3 rwm
-lxc.cgroup.devices.allow = c 1:5 rwm
-# consoles
-lxc.cgroup.devices.allow = c 5:1 rwm
-lxc.cgroup.devices.allow = c 5:0 rwm
-lxc.cgroup.devices.allow = c 4:0 rwm
-lxc.cgroup.devices.allow = c 4:1 rwm
-# /dev/{,u}random
-lxc.cgroup.devices.allow = c 1:9 rwm
-lxc.cgroup.devices.allow = c 1:8 rwm
-lxc.cgroup.devices.allow = c 136:* rwm
-lxc.cgroup.devices.allow = c 5:2 rwm
-# rtc
-lxc.cgroup.devices.allow = c 254:0 rwm
-
-# we don't trust even the root user in the container, better safe than sorry.
-# comment out only if you know what you're doing.
-lxc.cap.drop = sys_module mknod mac_override mac_admin sys_time setfcap setpcap
-
-# you can try also this alternative to the line above, whatever suits you better.
-# lxc.cap.drop=sys_admin
+lxc.start.auto = 0
 EOF
 
 if [ $? -ne 0 ]; then
