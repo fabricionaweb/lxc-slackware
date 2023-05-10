@@ -239,6 +239,7 @@ bash
 bin
 bridge-utils
 bzip2
+ca-certificates
 coreutils
 cracklib
 cyrus-sasl
@@ -254,8 +255,10 @@ elogind
 elvis
 etc
 eudev
+file
 findutils
 gawk
+glibc-zoneinfo
 gnupg
 gnutls
 grep
@@ -277,14 +280,17 @@ libtirpc
 libunistring
 logrotate
 mpfr
+nano
 net-tools
 nettle
 network-scripts
 ncurses
 pam
 openssh
+openssl
 openssl-solibs
 p11-kit
+perl
 pkgtools
 procps-ng
 sed
